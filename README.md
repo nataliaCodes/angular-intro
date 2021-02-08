@@ -1,6 +1,6 @@
 # AngularIntro
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.4 to follow along with the [Angular For Beginners](https://angular-university.io/course/getting-started-with-angular2) course.
 
 ## Development server
 
