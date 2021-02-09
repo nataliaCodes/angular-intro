@@ -1,10 +1,9 @@
 import {AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
-import {COURSES} from '../db-data';
 import {Course} from './model/course';
 import {CourseCardComponent} from './course-card/course-card.component';
 import {HighlightedDirective} from './directives/highlighted.directive';
 import {Observable} from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { CoursesService } from './services/courses.service';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +19,9 @@ export class AppComponent implements OnInit {
   //initialize courses as undefined - used in the get method using the subscribe
   // courses;
 
-  constructor(private http: HttpClient) {
+  //the custom coursesService is injected into the class through the contructor
+  //connects to the custom service inside courses.service.ts, which is an http call
+  constructor(private coursesService: CoursesService) {
 
   }
 
@@ -28,14 +29,9 @@ export class AppComponent implements OnInit {
   //the HTTP call is an AJAX call
   ngOnInit() {
 
-    //the HttpParams class is immutable - to change the params we need to use .set
-    //the set method will request the first page with the first 10 results on that page to be returned
-    const params = new HttpParams()
-      .set("page", "1")
-      .set("pageSize", "10");
-
     //the return value of this call is being used in the template with the async pipe
-    this.courses$ = this.http.get<Course[]>('/api/courses', {params});
+    //if we need this data to be available within multiple layers the call can be made through a custom service
+    this.courses$ = this.coursesService.loadCourses();
 
     //subscribe is the success handler - not needed when using observables
     // this.http.get('/api/courses', {params})
