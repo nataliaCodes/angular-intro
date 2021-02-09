@@ -25,4 +25,36 @@
 
 </div>
 
+<div class="demo">
+  <p>Demonstrating Angular pipes</p>
+
+  <!-- | date = the date pipe formats dates; the string after date can be used to specify the exact format we want to use; it is optional -->
+  <div>Start Day: {{startDate | date: 'MMM/dd/yyyy'}}</div>
+
+  <!-- | uppercase, lowercase, titlecase are pipes used to format strings -->
+  <div>{{title | titlecase}}</div>
+
+  <!-- | number pipe allows formatting of numbers; the string after number is an argument for the pipe and it says there should be a minimum of 3 numbers before the fraction (.) and a minimum of 3 and a max of 5 numbers after the fraction -->
+  <div>{{price | number: '3.3-5'}}</div>
+
+  <!-- the default for currency is US dollars, can be changed with specific argument -->
+  <div>{{price | currency: 'EUR'}}</div>
+
+  <!-- percent formats fractional numbers to show in percentage -->
+  <div>Percentage: {{rate | percent}}</div>
+
+  <!-- the slice pipe slices an array between two indexes, last index not included => the below only shows cards 0 and 1 -->
+  <course-card *ngFor="let course of courses | slice:0:2; index as i" [course]="course" [cardIndex]="i + 1"></course-card>
+
+  <!-- | json = displays the data as a json, mainly used for debugging purposes -->
+
+  <!-- | keyvalue - allows for iteration over the keys or values of an object -->
+  <div *ngFor="let pair of course | keyvalue">
+
+    {{pair.key + ': ' + pair.value}}
+
+  </div>
+
+</div>
+
 
