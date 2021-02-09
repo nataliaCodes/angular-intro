@@ -16,6 +16,7 @@ export class AppComponent {
 
   ngrxCourse = COURSES[2];
 
+  //passing the selected course as a parameter
   onCourseSelected(course:Course) {
     console.log('app component - event selected', course);
   };

@@ -10,9 +10,9 @@
   <!-- courseSelected is a custom event handler that is being defined inside the app component -->
   <course-card (courseSelected)="onCourseSelected($event)" [course]="coreCourse"></course-card>
 
-  <course-card [course]="rxjsCourse"></course-card>
+  <course-card (courseSelected)="onCourseSelected($event)" [course]="rxjsCourse"></course-card>
 
-  <course-card [course]="ngrxCourse"></course-card>
+  <course-card (courseSelected)="onCourseSelected($event)" [course]="ngrxCourse"></course-card>
 
 </div>
 
