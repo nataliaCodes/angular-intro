@@ -41,6 +41,14 @@ export class AppComponent implements OnInit {
     //   );
   }
 
-
+  //the saveCourse method is defined inside the courses.service.ts custom service
+  //the save() method is called at the app template level whenever the input value changes
+  //!!we need to subscribe to the call, otherwise nothing will be saved!!
+  save(course:Course) {
+    this.coursesService.saveCourse(course)
+      .subscribe(
+        () => console.log('saved!')
+      );
+  }
 
 }

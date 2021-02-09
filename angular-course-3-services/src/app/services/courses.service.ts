@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import {Course} from '../model/course';
 
 @Injectable({
@@ -27,7 +27,13 @@ export class CoursesService {
 
    }
 
+   //the method is called from the application component
    saveCourse(course:Course) {
 
+      //sets custom haders if we need to authenticate the user
+      const headers = new HttpHeaders()
+        .set("X-Auth", "userId");
+
+      return this.http.put(`/api/courses/${course.id}`, course, {headers});
    }
 }

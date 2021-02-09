@@ -21,12 +21,14 @@ import {CourseImageComponent} from '../course-image/course-image.component';
 })
 export class CourseCardComponent implements OnInit {
 
+    //creates a copy of the course
     @Input()
     course: Course;
 
     @Input()
     cardIndex: number;
 
+    //detects change on a course card
     @Output('courseChanged')
     courseEmitter = new EventEmitter<Course>();
 
@@ -39,9 +41,10 @@ export class CourseCardComponent implements OnInit {
 
     }
 
-
+    //the argument data is passed from the template level
     onSaveClicked(description:string) {
 
+        //spreads the existing course object then changes the description according to the user input coming from the template
         this.courseEmitter.emit({...this.course, description});
 
     }
