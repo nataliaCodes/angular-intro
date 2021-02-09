@@ -8,11 +8,20 @@
 <div class="courses">
 
   <!-- courseSelected is a custom event handler that is being defined inside the app component -->
-  <course-card (courseSelected)="onCourseSelected($event)" [course]="coreCourse"></course-card>
-
-  <course-card (courseSelected)="onCourseSelected($event)" [course]="rxjsCourse"></course-card>
-
-  <course-card (courseSelected)="onCourseSelected($event)" [course]="ngrxCourse"></course-card>
+  <!-- ngFor loops through an array accessible in the app component -->
+  <!-- looping is done as with a JS for loop -->
+  <!-- ngFor gives access to the index also -->
+  <!-- ngFor gives access to the first and last elements of the array with the 'first' and 'last' variables; also gives access to even and odd elements -->
+  <!-- class.is-first = true applies the class to all elements; class.is-first = isFirst applies the style to only the first element -->
+  <course-card *ngFor="let course of courses; index as i; first as isFirst; last as isLast; even as isEven; odd as isOdd"
+    [class.is-first]="isFirst"
+    [class.is-last]="isLast"
+    [class.is-even]="isEven"
+    [class.is-odd]="isOdd"
+    (courseSelected)="onCourseSelected($event)"
+    [course]="course"
+    [cardIndex]="i + 1">
+  </course-card>
 
 </div>
 

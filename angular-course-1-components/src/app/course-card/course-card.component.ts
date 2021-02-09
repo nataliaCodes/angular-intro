@@ -15,6 +15,9 @@ export class CourseCardComponent implements OnInit {
   @Input()
   course:Course;
 
+  @Input()
+  cardIndex:number;
+
   //defines a new custom event handler using the Angular core EventEmitter
   //<Course> shows what type of values are being emmited
   @Output()

@@ -10,13 +10,9 @@ import {Course} from './model/course';
 })
 export class AppComponent {
 
-  coreCourse = COURSES[0];
+  courses = COURSES;
 
-  rxjsCourse = COURSES[1];
-
-  ngrxCourse = COURSES[2];
-
-  //passing the selected course as a parameter
+  //passing the selected course as a parameter to the custom event handler
   onCourseSelected(course:Course) {
     console.log('app component - event selected', course);
   };
