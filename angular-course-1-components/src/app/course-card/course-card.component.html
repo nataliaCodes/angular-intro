@@ -5,7 +5,7 @@
 
   <!-- the question mark (the elvis operator) checks if the value being acessed is defined or not - app will not crash with undefined objects -->
   <!-- in our case the elvis operator is not needed, since the card will not be rendered if the object is undefined - as per the ngIf above -->
-  <div class="course-title">
+  <div class="course-title" [ngStyle]="cardStyles()">
       {{ cardIndex + '. ' + course?.description }}
   </div>
   <img width="300" alt="Angular Logo" *ngIf="isImageVisible(); else noImage"
@@ -19,6 +19,14 @@
 
   <div class="course-description">
       {{ course?.longDescription }}
+  </div>
+
+  <!-- the ngSwitch works like a classic JS switch - [ngSwitch] defines the value for the switch, then *ngSwitchCase defines the individual cases-->
+  <div class="course-category" [ngSwitch]="course.category">
+    <div class="category" *ngSwitchCase="'BEGINNER'">Beginner</div>
+    <div class="category" *ngSwitchCase="'INTERMEDIATE'">Intermediate</div>
+    <div class="category" *ngSwitchCase="'ADVANCED'">Advanced</div>
+    <div class="category" *ngSwitchDefault>All levels</div>
   </div>
 
   <button (click)="onCourseViewed()">View course</button>

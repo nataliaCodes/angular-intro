@@ -46,4 +46,9 @@ export class CourseCardComponent implements OnInit {
     return {'beginner': this.course.category == 'BEGINNER'};
   }
 
+  //function used by ngStyle in the template
+  cardStyles() {
+    return {'text-decoration': 'underline'};
+  }
+
 }
