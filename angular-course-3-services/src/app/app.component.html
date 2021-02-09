@@ -5,11 +5,12 @@
 
 </div>
 
+<!-- | async = async pipe that subscribes to the observable passed to it (courses$); also works with promises-->
 <div>
 
   <div class="courses">
 
-    <course-card *ngFor="let course of courses"
+    <course-card *ngFor="let course of (courses$ | async)"
                  [course]="course">
 
       <course-image [src]="course.iconUrl"></course-image>
