@@ -36,4 +36,14 @@ export class CourseCardComponent implements OnInit {
     this.courseSelected.emit(this.course);
   }
 
+  //renders image only if available inside the initial object
+  isImageVisible() {
+    return this.course && this.course.iconUrl;
+  }
+
+  //sets the beginner class conditions
+  cardClasses() {
+    return {'beginner': this.course.category == 'BEGINNER'};
+  }
+
 }

@@ -1,0 +1,5 @@
+
+/* the .beginner class is known as a state class, becuse it renders conditionally inside the component */
+.course-card.beginner {
+  background-color: lightcoral;
+}

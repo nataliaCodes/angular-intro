@@ -1,13 +1,24 @@
-<div class="course-card">
+<!-- ngIf allows conditional rendering of elements/properties -->
+<!-- ngClass allows for state classes to be created and passed conditionally -->
+<div class="course-card" *ngIf="course"
+  [ngClass]="cardClasses()">
 
+  <!-- the question mark (the elvis operator) checks if the value being acessed is defined or not - app will not crash with undefined objects -->
+  <!-- in our case the elvis operator is not needed, since the card will not be rendered if the object is undefined - as per the ngIf above -->
   <div class="course-title">
-      {{ cardIndex + '. ' + course.description }}
+      {{ cardIndex + '. ' + course?.description }}
   </div>
-  <img width="300" alt="Angular Logo"
+  <img width="300" alt="Angular Logo" *ngIf="isImageVisible(); else noImage"
        [src]="course.iconUrl">
 
+  <!-- the else clause of the ngIf uses the template block below to render 'No image is avalable' instead of nothing at all -->
+  <ng-template #noImage>
+    <p>No image is available.</p>
+  </ng-template>
+
+
   <div class="course-description">
-      {{ course.longDescription }}
+      {{ course?.longDescription }}
   </div>
 
   <button (click)="onCourseViewed()">View course</button>
